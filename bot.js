@@ -89,6 +89,17 @@ client.on('message', msg => {
   }
 });
 
+//banned words
+if(sender.id ---'476728094447894529'){
+
+}
+
+if (msg.includes('sik')){
+message.delete()
+message.author.send('msg.reply kötü kelime kullanmak yasak')
+}
+
+
 client.elevation = message => {
   if(!message.guild) {
 	return; }
