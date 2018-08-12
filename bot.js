@@ -89,13 +89,6 @@ client.on('message', msg => {
   }
 });
 
-//banned words
-client.on('message', msg => {
-if (msg.content.toLowerCase() === 'sik')
-message.delete()
-message.author.send(' kötü kelime kullanmak yasak')
-});
-
 client.elevation = message => {
   if(!message.guild) {
 	return; }
