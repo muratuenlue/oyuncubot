@@ -12,6 +12,7 @@ const log = message => {
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
 };
 
+
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir('./komutlar/', (err, files) => {
@@ -89,15 +90,6 @@ client.on('message', msg => {
   }
 });
 
-client.setInterval(() => {
-    let Status = [
-        `💻Yeni Güncelleme Yakında`,
-        `🎲 ${client.guilds.size} sunucuda hizmet!`,
-        `💎b/yardım yaz yardım komutlarına eriş`,
-	`👤 ${client.users.size} kullanıcı`, 
-    ];
-
-
 client.elevation = message => {
   if(!message.guild) {
 	return; }
@@ -108,6 +100,16 @@ client.elevation = message => {
   return permlvl;
 };
 
+client.setInterval(() => {
+    let Status = [
+        `💻Yeni Güncelleme Yakında`,
+        `🎲 ${client.guilds.size} sunucuda hizmet!`,
+        `💎b/yardım yaz yardım komutlarına eriş`,
+	`👤 ${client.users.size} kullanıcı`, 
+    ];
+    client.user.setActivity(Status[Math.floor(Math.random() * Status.length)], { "type": "PLAYING" }); 
+    client.user.setStatus('online'); 
+}, 5 * 1000); 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 // client.on('debug', e => {
 //   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
