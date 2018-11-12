@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   //!süreli-sustur@üye 1s/m/h/d | 1s = 1 saniye , 1m = 1 dakika , 1h = 1 saat, 1d = 1 gün
 
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!tomute) return message.reply("Yanlış yazdınız doğru yazım:b/süreli-sustur <kullanıcı> <süre> ");
+  if(!tomute) return message.reply("Yanlış yazdınız doğru yazım:_süreli-sustur <kullanıcı> <süre> ");
   if(tomute.hasPermission("VIEW_AUDIT_LOG")) return message.reply("Bu kişi yetkilidir");
 let muterole = message.guild.roles.find(r => r.name === "Muted");
 
@@ -30,7 +30,7 @@ let muterole = message.guild.roles.find(r => r.name === "Muted");
   }
   //end of create role
   let mutetime = args[1];
-  if(!mutetime) return message.reply("Yanlış yazdınız doğru yazım:b/süreli-sustur <kullanıcı> <süre>");
+  if(!mutetime) return message.reply("Yanlış yazdınız doğru yazım:_süreli-sustur <kullanıcı> <süre>");
 
   await(tomute.addRole(muterole.id));
   message.reply(`<@${tomute.id}> başarıyla susturuldu! ${ms(ms(mutetime))}`);
