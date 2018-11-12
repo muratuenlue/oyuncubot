@@ -13,7 +13,7 @@ exports.run = (client, message) => {
 	const pingozel = new Discord.RichEmbed()
     .setColor(0x00AE86)
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('**07.08.2018 Tarihinde OR |💻OyuncuReisHD#0421 Tarafından Yapılmıştır. Diğer Bütün Bilgiler İçin O!yardım**');
+    .setDescription('**12.11.2018 Tarihinde  Tarafından Yapılmıştır. Diğer Bütün Bilgiler İçin _yardım**');
     return message.author.sendEmbed(pingozel)
 };
 
