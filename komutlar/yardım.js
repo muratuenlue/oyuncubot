@@ -4,32 +4,32 @@ const ayarlar = require('../ayarlar.json');
 var prefix = ayarlar.prefix;
 
 exports.run = (client, message, params) => {
-  const embedyardim = new Discord.RichEmbed()
-  .setTitle("Komutlar")
-  .setDescription('')
-  .setColor(0x00ffff)
-  .addField("**Eğlence ve Kullanıcı Komutları:**", `	O!banned = Dene ve Gör! \nO!avatarım = Avatarınınızı Gösterir. \nO!herkesebendençay = Herkese Çay Alırsınız. \nO!koş = Koşarsınız.\nO!çayiç = Çay İçersiniz. \nO!çekiç = İstediğiniz Kişiye Çekiç Atarsınız. \nO!çayaşekerat = Çaya Şeker Atarsınız. \nO!yumruh-at = Yumruk Atarsınız. \nO!yaz = Bota İstediğiniz Şeyi Yazdırırsınız. \nO!sunucuresmi = BOT Sunucunun Resmini Atar. \nO!sunucubilgi = BOT Sunucu Hakkında Bilgi Verir. \nO!kullanıcıbilgim = Sizin Hakkınızda Bilgi Verir. `)
-  .addField("**Yetkilisi Komutlar**", `O!temizle=Belirlenen miktar mesajı siler. \nO!ban = İstediğiniz Kişiyi Sunucudan Banlar. \nO!kick  = İstediğiniz Kişiyi Sunucudan Atar. \nO!unban = İstediğiniz Kişinin Yasağını Açar. \nO!sustur = İstediğiniz Kişiyi Susturur. \nO!oylama = Oylama Açar. \nO!duyuru = Güzel Bir Duyuru Görünümü Sağlar.`)
-  .addField("**Ana Komutlar**", "O!yardım = BOT Komutlarını Atar. \nO!bilgi = BOT Kendisi Hakkında Bilgi Verir. \nO!ping = BOT Gecikme Süresini Söyler. \nO!davet = BOT Davet Linkini Atar. \nO!istatistik = BOT İstatistiklerini Atar.")
-  .addField("**Yapımcı**", " **OR |💻OyuncuReisHD#0421** ")
-  .setFooter('**--------------------------**')
+
   if (!params[0]) {
     const commandNames = Array.from(client.commands.keys());
     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
-    message.channel.send(embedyardim);
+    message.author.sendCode('asciidoc', `= Komut Listesi =\n\n[Komut hakkında bilgi için ${ayarlar.prefix}yardım <komut adı>]\n\n${client.commands.map(c => `${ayarlar.prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}`).join('\n')}`);
+  if (message.channel.type !== 'dm') {
+    const ozelmesajkontrol = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setDescription('Özel mesajlarını kontrol et. :postbox:');
+    message.channel.sendEmbed(ozelmesajkontrol) }
   } else {
     let command = params[0];
     if (client.commands.has(command)) {
       command = client.commands.get(command);
-      message.author.send('asciidoc', `= ${command.help.name} = \n${command.help.description}\nDoğru kullanım: ` + prefix + `${command.help.usage}`);
+      message.author.sendCode('asciidoc', `= ${command.help.name} = \n${command.help.description}\nDoğru kullanım: ` + prefix + `${command.help.usage}`);
     }
   }
+
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['h', 'halp', 'help', 'y'],
+  aliases: ['h', 'halp', 'help', 'y','yardim'],
   permLevel: 0
 };
 
