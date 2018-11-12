@@ -104,7 +104,7 @@ client.setInterval(() => {
     let Status = [
         `💻Yeni Güncelleme Yakında`,
         `🎲 ${client.guilds.size} sunucuda hizmet!`,
-        `💎b/yardım yaz yardım komutlarına eriş`,
+        `💎_yardım yaz yardım komutlarına eriş`,
 	`👤 ${client.users.size} kullanıcı`, 
     ];
     client.user.setActivity(Status[Math.floor(Math.random() * Status.length)], { "type": "PLAYING" }); 
